@@ -12,10 +12,11 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  database: rubytify
   username: postgres
-  password: carajo
+  database: rubytify
+  password: <%= ENV['DEVELOPMENT_PWD'] %>
+  timeout: 5000
+  pool: 5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,5 +26,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  database: rubytify-production
+  password: <%= ENV['PRODUCTION_PWD'] %>
+  timeout: 5000
+  pool: 5

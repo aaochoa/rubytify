@@ -1,7 +1,7 @@
 require 'rspotify'
 require 'yaml'
 
-RSpotify.authenticate(ENV['SPOTIFY_KEY'], ENV['SPOTIFY_SECRET'])
+RSpotify.authenticate('04bbe1c429004d059db4d779f7b07ef1', 'f4ba6691b34648b7813dd454cf783509')
 
 namespace :spotify_api do
   desc "TODO"

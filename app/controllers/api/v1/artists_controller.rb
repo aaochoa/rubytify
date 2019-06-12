@@ -7,10 +7,10 @@ module Api
         render json: {status: 'SUCCESS', data: artists}, status: :ok
       end
 
+      # Get all artist albums
       def get_albums
-        # Get all artist albums
         albums = Artist.find(params[:id]).albums.select(:id, :name, :image, :spotify_url, :total_tracks)
-        if albums
+        if !albums.empty?
           render json: {status: 'SUCCESS', data: albums}, status: :ok
         else
           render json: {status: 'FAILED', data: {name: 'Artist not found.'}}, status: :unprocessable_entity

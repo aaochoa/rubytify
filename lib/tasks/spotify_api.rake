@@ -1,12 +1,12 @@
 require 'rspotify'
 require 'yaml'
 
-RSpotify.authenticate('04bbe1c429004d059db4d779f7b07ef1', 'f4ba6691b34648b7813dd454cf783509')
 
 namespace :spotify_api do
   desc "TODO"
   task get_data: :environment do
     puts "************** Beginning of task **************"
+    RSpotify.authenticate('04bbe1c429004d059db4d779f7b07ef1', 'f4ba6691b34648b7813dd454cf783509')
     file = YAML::load(File.open('config/artists.yml'))
     file["artists"].each do |artist|
     # fetching artist data from the yaml
@@ -22,7 +22,7 @@ namespace :spotify_api do
 
       artist_created = Artist.create(artist_data)
       puts artist_created
-      sleep 1
+      sleep 2
       # fetching artist_albums data using the first query
       albums = thing.albums
       albums.each do |album|
@@ -36,7 +36,7 @@ namespace :spotify_api do
 
         album_created = Album.create(album_data)
         puts album_created
-        sleep 1
+        sleep 2
         # finally getting album_tracks from the queries done before
         album.tracks.each do |track|
           puts 'Song', track.name

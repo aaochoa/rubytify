@@ -4,7 +4,11 @@ module Api
       #Get artists and order them by popularity
       def index
         artists = Artist.select(:id, :name, :image, :genres, :popularity, :spotify_url).order('popularity DESC')
-        render json: {status: 'SUCCESS', data: artists}, status: :ok
+        if artist.any?
+          render json: {status: 'SUCCESS', data: artists}, status: :ok
+        else
+          render json: {status: 'FAILED', data: 'No artists saved'}, status: :unprocessable_entity
+        end
       end
 
       # Get all artist albums

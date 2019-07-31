@@ -5,8 +5,11 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'rack-cors', '~> 0.3.1'
 gem 'rspotify'
 gem 'pg', '~> 1.1', '>= 1.1.4'
+gem 'active_model_serializers', '~> 0.10.8'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
